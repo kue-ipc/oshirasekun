@@ -1,7 +1,20 @@
-# Tauri + Solid + Typescript
+# お知らせ君
 
-This template should help get you started developing with Tauri, Solid and Typescript in Vite.
+お知らせ君
 
-## Recommended IDE Setup
+## 開発
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+- Rust
+- Node.js + pnpm
+
+```
+pnpm install
+pnpm tauri dev
+```
+
+## ビルド
+
+```
+pnpm install
+pnpm tauri build
+```
