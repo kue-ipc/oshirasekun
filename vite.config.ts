@@ -1,9 +1,17 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
+import civetPlugin from 'vite-plugin-civet';
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [solidPlugin()],
+  plugins: [
+    solidPlugin(),
+    civetPlugin({
+      stripTypes: false,
+      outputExtension: 'tsx',
+      outputTransformerPlugin: 'solid',
+    }),
+  ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors
