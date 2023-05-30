@@ -6,49 +6,24 @@ logo from "./assets/logo.svg"
 import "./App.css"
 
 App := ->
-  [greetMsg, setGreetMsg] := createSignal("")
-  [name, setName] := createSignal("")
+  [done, setDone] := createSignal(false)
   [msg, setMsg] := createSignal("")
 
-  greet := async ->
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    invoke("greet", name: name()) |> await |> setGreetMsg
- 
   getMsg := async ->
     client := await getClient();
     response := await client.get<string> "https://www.kyokyo-u.ac.jp/c_ipc/data/note.txt",
       timeout: 30
       responseType: ResponseType.Text
-    setMsg(response.data)
+    setMsg(await invoke("sjis_to_utf8", src: response.data))
+    setDone(true)
+  getMsg()
 
   <div .container>
-    <h1>Welcome to Tauri!
-
-    <div .row>
-      <a href="https://vitejs.dev" target="_blank">
-        <img .logo.vite src="/vite.svg" alt="Vite logo">
-      <a href="https://tauri.app" target="_blank">
-        <img .logo.tauri src="/tauri.svg" alt="Tauri logo">
-      <a href="https://solidjs.com" target="_blank">
-        <img .logo.solid src=logo alt="Solid logo">
-
-    <p>Click on the Tauri, Vite, and Solid logos to learn more.
-
-    <div .row>
-      <div>
-        <input
-          #greet-input
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        >
-        <button type="button" onClick={() => greet()}>
-          Greet
-
-    <p>{greetMsg()}
-
-    <button type="button" onClick={() => getMsg()}>
-      Get
-
-    <p>{msg()}
+    {
+    if done()
+      <p>{msg()}
+    else
+      <p>読取中
+    }
 
 export default App
