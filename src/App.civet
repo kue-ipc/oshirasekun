@@ -14,8 +14,9 @@ App := ->
     response := await client.get<[number]> "https://www.kyokyo-u.ac.jp/c_ipc/data/note.txt",
       timeout: 30
       responseType: ResponseType.Binary
-    // setMsg(await invoke("sjis_to_utf8", src: Uint8Array.from(response.data)))
-    setMsg(await invoke("sjis_to_utf8", src: [1, 2, 3]))
+    setMsg(await invoke("sjis_to_utf8", src: response.data))
+    // setMsg(await invoke("sjis_to_utf8", src: [1, 2, 3]))
+    // setMsg(await invoke("sjis_to_utf8", src: "abc"))
     setDone(true)
   getMsg()
 
