@@ -11,10 +11,11 @@ App := ->
 
   getMsg := async ->
     client := await getClient();
-    response := await client.get<string> "https://www.kyokyo-u.ac.jp/c_ipc/data/note.txt",
+    response := await client.get<[number]> "https://www.kyokyo-u.ac.jp/c_ipc/data/note.txt",
       timeout: 30
-      responseType: ResponseType.Text
-    setMsg(await invoke("sjis_to_utf8", src: response.data))
+      responseType: ResponseType.Binary
+    // setMsg(await invoke("sjis_to_utf8", src: Uint8Array.from(response.data)))
+    setMsg(await invoke("sjis_to_utf8", src: [1, 2, 3]))
     setDone(true)
   getMsg()
 
