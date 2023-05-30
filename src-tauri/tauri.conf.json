@@ -13,7 +13,8 @@
   "tauri": {
     "allowlist": {
       "http": {
-        "request": true
+        "request": true,
+        "scope": ["https://www.kyokyo-u.ac.jp/*"]
       }
     },
     "bundle": {

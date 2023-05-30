@@ -1,15 +1,25 @@
 { createSignal } from "solid-js"
 logo from "./assets/logo.svg"
 { invoke } from "@tauri-apps/api/tauri"
+{ getClient, ResponseType } from "@tauri-apps/api/http"
+
 import "./App.css"
 
 App := ->
   [greetMsg, setGreetMsg] := createSignal("")
   [name, setName] := createSignal("")
+  [msg, setMsg] := createSignal("")
 
   greet := async ->
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     invoke("greet", name: name()) |> await |> setGreetMsg
+ 
+  getMsg := async ->
+    client := await getClient();
+    response := await client.get<string> "https://www.kyokyo-u.ac.jp/c_ipc/data/note.txt",
+      timeout: 30
+      responseType: ResponseType.Text
+    setMsg(response.data)
 
   <div .container>
     <h1>Welcome to Tauri!
@@ -35,5 +45,10 @@ App := ->
           Greet
 
     <p>{greetMsg()}
+
+    <button type="button" onClick={() => getMsg()}>
+      Get
+
+    <p>{msg()}
 
 export default App
