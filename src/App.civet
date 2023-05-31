@@ -1,9 +1,6 @@
 { createSignal } from "solid-js"
-logo from "./assets/logo.svg"
 { invoke } from "@tauri-apps/api/tauri"
 { getClient, ResponseType } from "@tauri-apps/api/http"
-
-import "./App.css"
 
 App := ->
   [done, setDone] := createSignal(false)
@@ -21,11 +18,8 @@ App := ->
   getMsg()
 
   <div .container>
-    {
-    if done()
-      <p>{msg()}
-    else
-      <p>読取中
-    }
+    <pre .note>{if done() then msg() else "読取中"}
+    <button #close>
+      閉じる
 
 export default App
