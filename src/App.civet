@@ -18,7 +18,7 @@ App := ->
   getMsg()
 
   <div .container>
-    <pre .note>{if done() then msg() else "読取中"}
+    <div .msg>{if done() then msg() else "読取中"}
     <button #close>
       閉じる
 
