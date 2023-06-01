@@ -9,7 +9,7 @@ $button-color: $purple;
   font-weight: 400;
 
   color: $gray-900;
-  background-color: $gray-300;
+  background-color: $gray-200;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -51,7 +51,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  color: $gray-300;
+  color: $gray-200;
   background-color: $button-color;
   transition: border-color 0.25s;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -65,6 +65,6 @@ button:hover {
 
 button:active {
   border-color: $button-color;
-  background-color: $gray-300;
+  background-color: $gray-200;
   color: $button-color;
 }
