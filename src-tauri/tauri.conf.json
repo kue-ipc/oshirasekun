@@ -31,7 +31,8 @@
         "icons/icon.ico"
       ],
       "identifier": "jp.ac.kyokyo-u.ipc.oshirasekun",
-      "targets": "app"
+      "targets": "app",
+      "publisher": "Kyoto University of Education"
     },
     "security": {
       "csp": null
