@@ -1,7 +1,7 @@
 :root {
   font-family: "BIZ UDPGothic", sans-serif;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 18px;
   font-weight: 400;
 
   color: #0f0f0f;
@@ -26,10 +26,11 @@
 .msg {
   overflow-y: scroll;
   /* width: 100%; */
-  border-radius: 10px;
   height: 505px;
   padding: 10px;
   background-color: #1f1f1f;
+  border-top: 2px solid #88888888;
+  border-left: 2px solid #88888888;
   color: #d7871d;
   margin: 5px;
   white-space: pre-wrap;
@@ -54,6 +55,7 @@ button#close {
 
 button:hover {
   border-color: #396cd8;
+  background-color: #e8e8e8;
 }
 button:active {
   border-color: #396cd8;

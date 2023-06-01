@@ -1,6 +1,7 @@
 { createSignal } from "solid-js"
 { invoke } from "@tauri-apps/api/tauri"
 { getClient, ResponseType } from "@tauri-apps/api/http"
+{ appWindow } from "@tauri-apps/api/window"
 
 App := ->
   [done, setDone] := createSignal(false)
@@ -19,7 +20,7 @@ App := ->
 
   <div .container>
     <div .msg>{if done() then msg() else "読取中"}
-    <button #close>
+    <button #close type="button" onClick={() => appWindow.close()}>
       閉じる
 
 export default App
