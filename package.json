@@ -1,7 +1,7 @@
 {
   "name": "oshirasekun",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "The notification app for Kyoto University of Education",
   "scripts": {
     "start": "vite",
     "dev": "vite",
