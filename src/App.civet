@@ -16,6 +16,7 @@ App := ->
     // setMsg(await invoke("sjis_to_utf8", src: [1, 2, 3]))
     // setMsg(await invoke("sjis_to_utf8", src: "abc"))
     setDone(true)
+    appWindow.show()
   getMsg()
 
   <div .container>

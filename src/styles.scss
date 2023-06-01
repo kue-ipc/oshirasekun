@@ -1,11 +1,15 @@
+@import "color";
+
+$button-color: $purple;
+
 :root {
   font-family: "BIZ UDPGothic", sans-serif;
   font-size: 16px;
   line-height: 18px;
   font-weight: 400;
 
-  color: #0f0f0f;
-  background-color: #b7b7b7;
+  color: $gray-900;
+  background-color: $gray-300;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,18 +30,20 @@
 .msg {
   overflow-y: scroll;
   /* width: 100%; */
-  height: 505px;
+  height: 503px;
   padding: 10px;
-  background-color: #1f1f1f;
-  border-top: 2px solid #88888888;
-  border-left: 2px solid #88888888;
-  color: #d7871d;
+  background-color: $gray-900;
+  border: 2px inset $gray-500;
+  // border-left: 2px solid $gray-700;
+  // border-bottom: 2px solid $gray-500;
+  // border-right: 2px solid $gray-500;
+  color: lighten($purple, 60%);
   margin: 5px;
   white-space: pre-wrap;
   text-align: start;
 }
 
-button#close {
+button {
   margin: 5px;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -45,8 +51,8 @@ button#close {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  color: #ffffff;
-  background-color: #313131;
+  color: $gray-300;
+  background-color: $button-color;
   transition: border-color 0.25s;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -54,10 +60,11 @@ button#close {
 }
 
 button:hover {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
+  background-color: darken($button-color, 20%);
 }
+
 button:active {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
+  border-color: $button-color;
+  background-color: $gray-300;
+  color: $button-color;
 }

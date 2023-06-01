@@ -1,7 +1,7 @@
 /* @refresh reload */
 { render } from "solid-js/web"
 
-import "./styles.css"
+import "./styles.scss"
 App from "./App.civet"
 
 render => <App />, document.getElementById("root") as HTMLElement
