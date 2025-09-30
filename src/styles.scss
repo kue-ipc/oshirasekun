@@ -1,6 +1,7 @@
-@import "color";
+@use "sass:color" as sass-color;
+@use "color";
 
-$button-color: $purple;
+$button-color: color.$purple;
 
 :root {
   font-family: "BIZ UDPGothic", sans-serif;
@@ -8,8 +9,8 @@ $button-color: $purple;
   line-height: 18px;
   font-weight: 400;
 
-  color: $gray-900;
-  background-color: $gray-200;
+  color: color.$gray-900;
+  background-color: color.$gray-200;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,12 +33,12 @@ $button-color: $purple;
   /* width: 100%; */
   height: 503px;
   padding: 10px;
-  background-color: $gray-900;
-  border: 2px inset $gray-500;
-  // border-left: 2px solid $gray-700;
-  // border-bottom: 2px solid $gray-500;
-  // border-right: 2px solid $gray-500;
-  color: lighten($purple, 60%);
+  background-color: color.$gray-900;
+  border: 2px inset color.$gray-500;
+  // border-left: 2px solid color.$gray-700;
+  // border-bottom: 2px solid color.$gray-500;
+  // border-right: 2px solid color.$gray-500;
+  color: sass-color.adjust(color.$purple, $lightness: 60%, $space: hsl);
   margin: 5px;
   white-space: pre-wrap;
   text-align: start;
@@ -51,7 +52,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  color: $gray-200;
+  color: color.$gray-200;
   background-color: $button-color;
   transition: border-color 0.25s;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -60,11 +61,11 @@ button {
 }
 
 button:hover {
-  background-color: darken($button-color, 20%);
+  background-color: sass-color.adjust($button-color, $lightness: -20%, $space: hsl);
 }
 
 button:active {
   border-color: $button-color;
-  background-color: $gray-200;
+  background-color: color.$gray-200;
   color: $button-color;
 }
