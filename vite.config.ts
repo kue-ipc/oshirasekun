@@ -1,16 +1,14 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
-import civetPlugin from 'vite-plugin-civet';
+import civetPlugin from '@danielx/civet/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
   plugins: [
-    solidPlugin(),
     civetPlugin({
-      stripTypes: false,
-      outputExtension: 'tsx',
-      outputTransformerPlugin: 'solid',
+      ts: "preserve",
     }),
+    solidPlugin(),
   ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
