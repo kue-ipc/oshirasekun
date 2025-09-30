@@ -1,27 +1,24 @@
 { createSignal } from "solid-js"
-{ invoke } from "@tauri-apps/api/tauri"
-{ getClient, ResponseType } from "@tauri-apps/api/http"
-{ appWindow } from "@tauri-apps/api/window"
+{ invoke } from "@tauri-apps/api/core"
+{ fetch } from "@tauri-apps/plugin-http"
+{ getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow"
 
 App := ->
   [done, setDone] := createSignal(false)
   [msg, setMsg] := createSignal("")
 
   getMsg := async ->
-    client := await getClient();
-    response := await client.get<[number]> "https://www.kyokyo-u.ac.jp/c_ipc/data/note.txt",
-      timeout: 30
-      responseType: ResponseType.Binary
-    setMsg(await invoke("sjis_to_utf8", src: response.data))
-    // setMsg(await invoke("sjis_to_utf8", src: [1, 2, 3]))
-    // setMsg(await invoke("sjis_to_utf8", src: "abc"))
+    response := await fetch "https://www.kyokyo-u.ac.jp/c_ipc/data/note.txt",
+      connectTimeout: 30 * 1000
+    data := await response.bytes()
+    setMsg(await invoke("sjis_to_utf8", src: data))
     setDone(true)
-    appWindow.show()
+    getCurrentWebviewWindow().show()
   getMsg()
 
   <div .container>
     <div .msg>{if done() then msg() else "読取中"}
-    <button #close type="button" onClick={() => appWindow.close()}>
+    <button #close type="button" onClick={() => getCurrentWebviewWindow().close()}>
       閉じる
 
 export default App
