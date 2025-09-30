@@ -10,17 +10,18 @@
 - Node.js + pnpm
 - Tauri + Solid.js + Civet
 
-```
+```sh
 pnpm install
 pnpm tauri dev
 ```
 
 ## ビルド
 
-```
+```sh
 pnpm install
 pnpm tauri build
 ```
+
 ## ライセンス
 
 アイコン画像を除き、MITライセンスです。
